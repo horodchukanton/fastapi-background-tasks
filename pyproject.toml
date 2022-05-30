@@ -1,0 +1,46 @@
+[project]
+name = "fastapi_background_tasks_test"
+version = "0.0.1"
+description = "Minimal reproducible test app"
+#readme = "README.rst"
+requires-python = ">=3.6"
+#license = {file = "LICENSE.txt"}
+keywords = ["test"]
+authors = [
+    {email = "antoman1994@gmail.com"},
+    {name = "Anton Horodchuk"}
+]
+maintainers = [
+    {name = "Anton Horodchuk", email = "antoman1994@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Private :: Do Not Upload"
+]
+
+dependencies = [
+    'uvicorn~=0.13.4',
+    'fastapi==0.63.0',
+    'pydantic~=1.8.2',
+    'requests~=2.25.1',
+]
+
+[project.optional-dependencies]
+test = [
+    "tox==3.25.0",
+    "pytest==7.0.1"
+]
+dev = [
+    "setuptools==62.2.0",
+]
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core"]
+
+[tool.flit.sdist]
+include = ["src"]
+
+[project.scripts]
+fastapi-background-tasks-test = "fastapi_background_tasks_test.main:main"
