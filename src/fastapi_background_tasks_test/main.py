@@ -17,6 +17,10 @@ async def async_task():
     await asyncio.sleep(5)
 
 
+async def async_blocking_task():
+    time.sleep(5)
+
+
 @app.get("/sync")
 async def root_run_sync(bg: BackgroundTasks):
     start_timestamp = datetime.now()
@@ -40,6 +44,16 @@ async def root_run_async_with_sync_task(bg: BackgroundTasks):
     end_timestamp = datetime.now()
     return {
         "message": f"Async with a sync task finished in "
+                   f"{end_timestamp - start_timestamp}"}
+
+
+@app.get("/async_with_async_lock")
+async def root_run_async_with_blocking_async_task(bg: BackgroundTasks):
+    start_timestamp = datetime.now()
+    bg.add_task(async_blocking_task)
+    end_timestamp = datetime.now()
+    return {
+        "message": f"Async with a async blocking task finished in "
                    f"{end_timestamp - start_timestamp}"}
 
 

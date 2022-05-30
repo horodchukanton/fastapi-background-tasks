@@ -44,3 +44,8 @@ class TestMain:
         with clock as cl:
             test_client.get('/async_sync')
             assert cl.elapsed() < 1
+
+    def test_async_with_async_lock(self, test_client, clock):
+        with clock as cl:
+            test_client.get('/async_with_async_lock')
+            assert cl.elapsed() < 1
