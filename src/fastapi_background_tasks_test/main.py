@@ -10,15 +10,15 @@ app = FastAPI()
 
 
 def sync_task():
-    time.sleep(5)
+    time.sleep(2)
 
 
 async def async_task():
-    await asyncio.sleep(5)
+    await asyncio.sleep(2)
 
 
 async def async_blocking_task():
-    time.sleep(5)
+    time.sleep(2)
 
 
 @app.get("/sync")
